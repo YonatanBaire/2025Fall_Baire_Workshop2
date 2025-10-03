@@ -45,17 +45,18 @@ while(true){
 
             switch (userInput){                                                                                                                                           //Based on what they type, make a switch case to handle it
                 case "1":
-                    for(int book = 0; book < books.length; book++)
-                        if(!books[book].isCheckedOut()) {
-                            System.out.println("ID: " + books[book].getId() + " ----ISBN #: " + books[book].getIsbn() + " ----Book Title: " + books[book].getTitle());           //Use a for loop and sout to print all the book titles
+                    for(Book book : books)
+                        if(book.isCheckedOut()==false) {
+                            System.out.println("ID: " + book.getId() +"     Book Title: " + book.getTitle() + "      ISBN #: " + book.getIsbn());           //Use a for loop and sout to print all the book titles
                         }
-                    System.out.println("Type anything to go back to main menu.");
+                    System.out.println("\n Type anything to go back to main menu.");
                     String back = scanner.nextLine();
                     break;
 
                 case "2":
-                                        for(int book = 0; book < books.length; book++){
-                    System.out.println("ID: " + books[book].getId() + " ----ISBN #: " + books[book].getIsbn() + " ----Book Title: " + books[book].getTitle());}
+                    for(Book book : books)
+                        if(book.isCheckedOut()==false){
+                    System.out.println("ID: " + book.getId() +"     Book Title: " + book.getTitle() + "      ISBN #: " + book.getIsbn());}
 
 
                     System.out.println("\n Which book would you like to check out, Put in ID number");
@@ -65,19 +66,19 @@ while(true){
                     System.out.println("What is your name?");
                     String name = scanner.nextLine();
 
-                    for(int book = 0; book < books.length; book++) {
-                        if (books[book].getId() == bookId) {
-                            books[book].setCheckedOut(true);
-                            books[book].setCheckedOutTo(name);
+                    for(Book book : books) {
+                        if (book.getId() == bookId) {
+                            book.setCheckedOut(true);
+                            book.setCheckedOutTo(name);
                             System.out.println("Book checked out successfully! \n");
                         }
                     }
                     break;
 
                 case"3":
-                    for (int book = 0; book < books.length; book++) {
-                        if (books[book].isCheckedOut()) {
-                            System.out.println("ID: " + books[book].getId() + " ----Book Title: " + books[book].getTitle() + " ----Checked Out To: " + books[book].getCheckedOutTo());
+                    for (Book book : books) {
+                        if (book.isCheckedOut()) {
+                            System.out.println("ID: " + book.getId() + "      Book Title: " + book.getTitle() + "     Checked Out To: " + book.getCheckedOutTo());
                         }
                     }
                     System.out.println("Type anything to go back to main menu.");
@@ -85,21 +86,20 @@ while(true){
                     break;
 
 
-
                 case "4":
-                    // Show checked out books first
-                    for (int book = 0; book < books.length; book++) {
-                        if (books[book].isCheckedOut()) {
-                            System.out.println("ID: " + books[book].getId() + " ----Book Title: " + books[book].getTitle() + " ----Checked Out To: " + books[book].getCheckedOutTo());
+                                                                                                                                                                // Show checked out books first
+                    for (Book book : books) {
+                        if (book.isCheckedOut()) {
+                            System.out.println("ID: " + book.getId() + "     Book Title: " + book.getTitle() + "     Checked Out To: " + book.getCheckedOutTo());
                         }
                     }
 
                     System.out.println("Which book ID would you like to check in?");
                     int number = scanner.nextInt();
                     String checkin = scanner.nextLine();
-                    for (int book = 0; book < books.length; book++) {
-                        if (books[book].getId() == number) {
-                            books[book].checkIn();
+                    for (Book book : books) {
+                        if (book.getId() == number) {
+                            book.checkIn();
                             System.out.println("Book checked in successfully! \n");
                         }
                     }
