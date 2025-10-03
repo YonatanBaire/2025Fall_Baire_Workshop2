@@ -68,8 +68,7 @@ while(true){
 
                     for(Book book : books) {
                         if (book.getId() == bookId) {
-                            book.setCheckedOut(true);
-                            book.setCheckedOutTo(name);
+                            book.checkOut(name);
                             System.out.println("Book checked out successfully! \n");
                         }
                     }
